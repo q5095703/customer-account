@@ -1,0 +1,8 @@
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\bin\Debug\netcoreapp2.0\Account-Customer.deps.json
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\bin\Debug\netcoreapp2.0\Account-Customer.runtimeconfig.json
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\bin\Debug\netcoreapp2.0\Account-Customer.runtimeconfig.dev.json
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\bin\Debug\netcoreapp2.0\Account-Customer.dll
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\obj\Debug\netcoreapp2.0\Account-Customer.csprojAssemblyReference.cache
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\obj\Debug\netcoreapp2.0\Account-Customer.csproj.CoreCompileInputs.cache
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\obj\Debug\netcoreapp2.0\Account-Customer.AssemblyInfoInputs.cache
+C:\Users\kirst\source\repos\Account-Customer\Account-Customer\obj\Debug\netcoreapp2.0\Account-Customer.AssemblyInfo.cs

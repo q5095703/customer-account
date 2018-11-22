@@ -1,0 +1,197 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+     <link href="~/css/Profile.css" rel="stylesheet" />
+    <title>Index</title>
+</head>
+<body>
+
+    @{
+        ViewData["Title"] = "View";
+    }
+
+    <div class="header__wrapper">
+        <a class="header__item">login</a>
+
+
+    </div>
+    <div class="side__wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 half-top">
+                    <a class="link__item">Profile</a>
+                    <a class="link__item">Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body__wrapper" data-bind="visible: $root.load()" style="display: none;">
+        <div data-bind="visible:!CanEditProfile() && !CanEditAddress()">
+            <div class="container-fluid">
+                <div class="row" data-bind="with: model.Profile">
+                    <div class="col-xs-12">
+                        <div class="profile__header">
+                            <h3>Your Profile</h3>
+                            <a class="right" data-bind="click:$root.editProfile">Edit Profile</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="profile__item">
+                            <label>Name</label>
+                            <p data-bind="text: name"></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="profile__item">
+                            <label>E-mail</label>
+                            <p data-bind="text:email"></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="profile__item">
+                            <label>Mobile Phone Number</label>
+                            <p data-bind="text:phoneNumber"></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="profile__item">
+                            <label>Password</label>
+                            <input type="password" class="hidden__input" readonly data-bind="textInput: password" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Your Addresses</h3>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="address__wrapper address__wrapper--add" data-bind="click:addAddress">
+                            <div class="icon icon--add half-top"></div><h3>Add Address</h3>
+                        </div>
+                    </div>
+                    <!-- ko foreach: model.Addresses -->
+                    <div class="col-xs-4">
+                        <div class="address__wrapper">
+                            <p data-bind="text:Name" class="address__name"> </p>
+                            <p data-bind="text:AddressLine1"></p>
+                            <p data-bind="text:AddressLine2"></p>
+                            <p data-bind="text:Postcode" class="half-bottom"></p>
+                            <div class="address__buttons">
+                                <a data-bind="click:$root.editAddress">Edit</a>
+                                <a data-bind="click:$root.deleteAddress">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ko-->
+                </div>
+            </div>
+        </div>
+        <div data-bind="template:{name:'editAddress', data: currentSelected}, visible:$root.CanEditAddress()"></div>
+
+        <div data-bind="template:{name:'editProfile', data: model.Profile}, visible:$root.CanEditProfile()"></div>
+    </div>
+    <div class="footer__wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="button button--red right" data-bind="click:$root.deleteProfile">Delete Account</button>
+                </div>
+            </div>
+
+        </div>
+        </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../../Scripts/knockout-3.4.2.js"></script>
+    <script src="../../ViewModel/ProfileViewModel.js"></script>
+    <script type="text/html" id="editProfile">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Update Profile</h3>
+                </div>
+                <div class="col-xs-12 half-top">
+                    <label>Name</label>
+                    <input type="text" class="input input__text" id="profile-name" data-bind="textInput: name"/>
+                </div>
+                <div class="col-xs-12 half-top">
+                    <label>E-mail</label>
+                    <input type="text" class="input input__text" id="profile-email" data-bind="textInput: email" />
+                </div>
+                <div class="col-xs-12 half-top">
+                    <label>Mobile Phone Number</label>
+                    <input type="text" class="input input__text" id="profile-number" data-bind="textInput: phoneNumber"/>
+                </div>
+                <div class="col-xs-12 half-top">
+                    <label>Password</label>
+                    <input type="password"  class="input input__text" id="profile-password" data-bind="textInput: password"/>
+                </div>
+                <div classs="col-xs-12 half-top">
+                    <button class="button button--green right" data-bind="click:$root.UpdateProfile">
+                        Save
+                    </button>
+                </div>
+            </div>
+            </div>
+    </script>
+
+    <script type="text/html" id="editAddress">
+        <div class="container-fluid">
+            <div class="col-xs-12">
+                <h3>Edit Address</h3>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label>Full Name</label>
+                    <input type="text" class="input input__text" id="address-name" data-bind="textInput:Name" />
+                </div>
+                <div class="col-xs-12">
+                    <label>Postcode</label>
+                    <input type="text" class="input input__text" id="address-postcode" data-bind="textInput:Postcode"/>
+                </div>
+                <div class="col-xs-12">
+                    <label>Country</label>
+                    <input type="text" class="input input__text" id="address-country" data-bind="textInput:Country"/>
+                </div>
+                <div class="col-xs-12">
+                    <label>Street Address</label>
+                    <input type="text" class="input input__text" id="address-line1" data-bind="textInput:AddressLine1"/>
+                    <input type="text" class="input input__text" id="address-line2" data-bind="textInput:AddressLine2" />
+                </div>
+                <div class="col-xs-6">
+                    <label>Town</label>
+                    <input type="text" class="input input__text" id="address-town" data-bind="textInput:Town"/>
+                </div>
+                <div class="col-xs-6">
+                    <label>County</label>
+                    <input type="text" class="input input__text" id="address-county" data-bind="textInput:County"/>
+                </div>
+                <div class="col-xs-12">
+                    <button class="button button--green right" data-bind="click:$root.UpdateAddress">
+                        Save
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </script>
+</body>
+</html>
+
